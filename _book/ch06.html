@@ -1,0 +1,502 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第六章 模型评估与参数调优实战 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch07.html" />
+    
+    
+    <link rel="prev" href="ch05.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ch03.html">
+            
+                <a href="ch03.html">
+            
+                    
+                    第三章 使用sklearn实现机器学习算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="ch04.html">
+            
+                <a href="ch04.html">
+            
+                    
+                    第四章 数据预处理-构建好的训练数据集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="ch05.html">
+            
+                <a href="ch05.html">
+            
+                    
+                    第五章 通过降维压缩数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="ch06.html">
+            
+                <a href="ch06.html">
+            
+                    
+                    第六章 模型评估与参数调优实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="ch07.html">
+            
+                <a href="ch07.html">
+            
+                    
+                    第七章 集成学习-组合不同的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="ch08.html">
+            
+                <a href="ch08.html">
+            
+                    
+                    第八章 使用机器学习进行情感分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="ch09.html">
+            
+                <a href="ch09.html">
+            
+                    
+                    第九章 在web应用中嵌入机器学习模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="ch10.html">
+            
+                <a href="ch10.html">
+            
+                    
+                    第十章 使用回归分析预测连续型目标变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="ch11.html">
+            
+                <a href="ch11.html">
+            
+                    
+                    第十一章聚类分析—处理无类标数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="ch12.html">
+            
+                <a href="ch12.html">
+            
+                    
+                    第十二章 使用人工神经网络识别图像
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >第六章 模型评估与参数调优实战</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x516D;&#x7AE0;-&#x6A21;&#x578B;&#x8BC4;&#x4F30;&#x4E0E;&#x53C2;&#x6570;&#x8C03;&#x4F18;&#x5B9E;&#x6218;">&#x7B2C;&#x516D;&#x7AE0; &#x6A21;&#x578B;&#x8BC4;&#x4F30;&#x4E0E;&#x53C2;&#x6570;&#x8C03;&#x4F18;&#x5B9E;&#x6218;</h1>
+<p>&#x672C;&#x7AE0;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>&#x6A21;&#x578B;&#x6027;&#x80FD;&#x7684;&#x65E0;&#x504F;&#x4F30;&#x8BA1;</li>
+<li>&#x5904;&#x7406;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x4E2D;&#x5E38;&#x89C1;&#x95EE;&#x9898;</li>
+<li>&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#x8C03;&#x4F18;</li>
+<li>&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x6027;&#x80FD;&#x6307;&#x6807;&#x8BC4;&#x4F30;&#x9884;&#x6D4B;&#x6A21;&#x578B;</li>
+</ul>
+<h2 id="&#x57FA;&#x4E8E;&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;">&#x57FA;&#x4E8E;&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;</h2>
+<p>&#x5728;&#x524D;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x5BF9;&#x6A21;&#x578B;&#x8FDB;&#x884C;&#x62DF;&#x5408;&#x7684;&#x65F6;&#x5019;&#x7684;&#x5F97;&#x5230;&#x4E86;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;&#x4F46;&#x5C06;&#x6A21;&#x578B;&#x7528;&#x4E8E;&#x65B0;&#x6570;&#x636E;&#x65F6;&#x9700;&#x91CD;&#x8BBE;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x3002;&#x672C;&#x8282;&#x8BFB;&#x8005;&#x5C06;&#x5B66;&#x5230;&#x4E00;&#x4E2A;&#x65B9;&#x4FBF;&#x4F7F;&#x7528;&#x7684;&#x5DE5;&#x5177;&#xFF1A;sklearn&#x4E2D;&#x7684;pipline&#x7C7B;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x628A;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x62DF;&#x5408;&#x5F97;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;&#x5E94;&#x7528;&#x4E8E;&#x65B0;&#x6570;&#x636E;&#x7684;&#x9884;&#x6D4B;&#x3002;</p>
+<h2 id="&#x8BC4;&#x4F30;&#x6A21;&#x578B;&#x6027;&#x80FD;">&#x8BC4;&#x4F30;&#x6A21;&#x578B;&#x6027;&#x80FD;</h2>
+<p>&#x6784;&#x5EFA;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#x7684;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x6B65;&#x9AA4;&#x5C31;&#x662F;<strong>&#x5728;&#x65B0;&#x6570;&#x636E;&#x4E0A;&#x5BF9;&#x6A21;&#x578B;&#x7684;&#x6027;&#x80FD;&#x8FDB;&#x884C;&#x8BC4;&#x4F30;</strong>&#x3002;&#x672C;&#x8282;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E24;&#x79CD;&#x6709;&#x7528;&#x7684;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x6280;&#x672F;&#xFF1A;holdout&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;(holdout cross-validation)&#x548C;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;(k-fold cross-validation),&#x501F;&#x52A9;&#x4E8E;&#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6A21;&#x578B;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x7684;&#x53EF;&#x9760;&#x4F30;&#x8BA1;&#xFF0C;&#x5373;&#x6A21;&#x578B;&#x5728;&#x65B0;&#x6570;&#x636E;&#x4E0A;&#x7684;&#x6027;&#x80FD;&#x8868;&#x73B0;&#x3002;</p>
+<h3 id="holdout&#x65B9;&#x6CD5;">holdout&#x65B9;&#x6CD5;</h3>
+<blockquote>
+<p> <strong>&#x6A21;&#x578B;&#x9009;&#x62E9;</strong>&#x6307;&#x7684;&#x662F;&#x9488;&#x5BF9;&#x7ED9;&#x5B9A;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x6211;&#x4EEC;&#x8C03;&#x6574;&#x53C2;&#x6570;&#x4EE5;&#x5BFB;&#x6C42;&#x6700;&#x4F18;&#x503C;(&#x4E5F;&#x79F0;&#x4E3A;&#x8D85;&#x53C2;)&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+</blockquote>
+<p>holdout&#x65B9;&#x6CD5;&#x5206;&#x56DB;&#x6B65;&#xFF1A;</p>
+<ol>
+<li>&#x5C06;&#x6570;&#x636E;&#x96C6;&#x5206;&#x6210;&#x4E09;&#x90E8;&#x5206;&#xFF1A;&#x8BAD;&#x7EC3;&#x96C6;&#x3001;&#x9A8C;&#x8BC1;&#x96C6;&#x3001;&#x6D4B;&#x8BD5;&#x96C6;</li>
+<li>&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x53C2;&#x6570;&#x548C;&#x8BAD;&#x7EC3;&#x96C6;&#x5BF9;&#x6A21;&#x578B;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;</li>
+<li>&#x4F7F;&#x7528;&#x9A8C;&#x8BC1;&#x96C6;&#x8BC4;&#x4F30;&#x8BAD;&#x7EC3;&#x597D;&#x7684;&#x6A21;&#x578B;&#x6027;&#x80FD;</li>
+<li>&#x6311;&#x9009;&#x51FA;&#x524D;&#x9762;&#x9A8C;&#x8BC1;&#x5F97;&#x51FA;&#x7684;&#x6700;&#x597D;&#x7684;&#x6A21;&#x578B;&#x548C;&#x6D4B;&#x8BD5;&#x96C6;&#x5BF9;&#x6A21;&#x578B;&#x7684;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x505A;&#x51FA;&#x8BC4;&#x4F30;</li>
+</ol>
+<p>&#x6B65;&#x9AA4;2,3&#x662F;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x6A21;&#x578B;&#x8D85;&#x53C2;&#x6570;&#x53CD;&#x590D;&#x6267;&#x884C;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x51FA;&#x6700;&#x4F18;&#x7684;&#x6A21;&#x578B;(&#x4E5F;&#x5C31;&#x662F;<strong>&#x6A21;&#x578B;&#x9009;&#x62E9;&#x7684;&#x8FC7;&#x7A0B;</strong>)&#x3002;</p>
+<p>holdout&#x65B9;&#x6CD5;&#x7684;&#x7F3A;&#x70B9;&#x5728;&#x4E8E;&#xFF1A;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x7684;&#x8BC4;&#x4F30;&#x5BF9;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5212;&#x5206;&#x4E3A;&#x8BAD;&#x7EC3;&#x53CA;&#x9A8C;&#x8BC1;&#x5B50;&#x96C6;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x654F;&#x611F;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x8BC4;&#x4EF7;&#x7684;&#x7ED3;&#x679C;&#x4F1A;&#x968F;&#x6837;&#x672C;&#x7684;&#x4E0D;&#x540C;&#x800C;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;</p>
+<h3 id="k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;">K&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;</h3>
+<p>&#x5728;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x91CD;&#x590D;&#x5730;&#x968F;&#x673A;&#x5C06;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5212;&#x5206;&#x4E3A;k&#x4E2A;&#xFF0C;&#x5176;&#x4E2D;k-1&#x4E2A;&#x7528;&#x4E8E;&#x6A21;&#x578B;&#x7684;&#x8BAD;&#x7EC3;&#xFF0C;&#x5269;&#x4F59;&#x7684;1&#x4E2A;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x3002;&#x91CD;&#x590D;&#x6B64;&#x8FC7;&#x7A0B;k&#x6B21;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5F97;&#x5230;&#x4E86;k&#x4E2A;&#x6A21;&#x578B;&#x53CA;&#x5BF9;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x7684;&#x8BC4;&#x4EF7;&#x3002;&#x6574;&#x4F53;&#x6A21;&#x578B;&#x7684;&#x6027;&#x80FD;&#x4F30;&#x8BA1;&#x662F;k&#x4E2A;&#x6A21;&#x578B;&#x7684;&#x6027;&#x80FD;&#x4F30;&#x8BA1;&#x7684;&#x5E73;&#x5747;&#x503C;&#x3002;&#x5BF9;&#x6BD4;&#x4E8E;holdout&#xFF0C;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x901A;&#x8FC7;&#x4E0D;&#x91CD;&#x590D;&#x7684;&#x968F;&#x673A;&#x5C06;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5212;&#x5206;&#x4E3A;k&#x4E2A;&#x6765;&#x964D;&#x4F4E;holdout&#x65B9;&#x6CD5;&#x5BF9;&#x6570;&#x636E;&#x96C6;&#x7684;&#x654F;&#x611F;&#x3002;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x6570;&#x636E;&#x96C6;&#x7684;&#x5212;&#x5206;&#x4E0A;&#x3002;</p>
+<p>&#x4E24;&#x8005;&#x7684;&#x5BF9;&#x6BD4;&#xFF1A;</p>
+<ul>
+<li>k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x4F7F;&#x7528;&#x65E0;&#x653E;&#x56DE;&#x62BD;&#x6837;&#xFF0C;&#x800C;holdout&#x5219;&#x662F;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x4EE5;&#x53CA;&#x9A8C;&#x8BC1;&#x6837;&#x672C;&#x3002;&#x4F18;&#x70B9;&#x5728;&#x4E8E;&#x65E0;&#x653E;&#x56DE;&#x62BD;&#x6837;&#x4F7F;&#x5F97;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x7684;&#x8BC4;&#x4F30;&#x5177;&#x6709;&#x8F83;&#x5C0F;&#x7684;&#x65B9;&#x5DEE;</li>
+</ul>
+<p>&#x7ECF;&#x9A8C;&#x503C;&#xFF1A;</p>
+<ul>
+<li>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;k=10</li>
+<li>&#x5C0F;&#x6570;&#x636E;&#x96C6;&#xFF0C;k&#x5927;&#x4E8E;10</li>
+<li>&#x8F83;&#x5927;&#x6570;&#x636E;&#x96C6;&#xFF0C;k=5</li>
+</ul>
+<p>k&#x503C;&#x7684;&#x9009;&#x62E9;&#x51C6;&#x5219;&#x5728;&#x4E8E;:&#x5C0F;&#x6570;&#x636E;&#x96C6;&#x4F7F;&#x7528;&#x8F83;&#x5927;&#x7684;k&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x5F97;&#x66F4;&#x591A;&#x7684;&#x6570;&#x636E;&#x540C;&#x4E8E;&#x8BAD;&#x7EC3;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x8F83;&#x5C0F;&#x7684;&#x504F;&#x5DEE;&#x3002;&#x4F46;&#x662F;k&#x503C;&#x8D8A;&#x5927;&#xFF0C;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#x4E5F;&#x4F1A;&#x76F8;&#x5E94;&#x7684;&#x589E;&#x5927;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x5BFC;&#x81F4;&#x8F83;&#x9AD8;&#x7684;&#x65B9;&#x5DEE;&#x3002;&#x8F83;&#x5927;&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x7531;&#x4E8E;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x6765;&#x652F;&#x6491;&#x66F4;&#x52A0;&#x590D;&#x6742;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x8F83;&#x5C0F;&#x7684;&#x504F;&#x5DEE;&#xFF0C;&#x540C;&#x65F6;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x8BA1;&#x7B97;&#x91CF;&#x8FC7;&#x5927;&#x4EE5;&#x53CA;&#x8FC7;&#x62DF;&#x5408;&#x95EE;&#x9898;&#xFF0C;k&#x503C;&#x4E0D;&#x5B9C;&#x8FC7;&#x5927;&#xFF0C;&#x56E0;&#x6B64;&#x9488;&#x5BF9;&#x5927;&#x6570;&#x636E;&#x96C6;k&#x503C;&#x9009;&#x4E86;&#x6BD4;&#x8F83;&#x5C0F;&#x7684;&#x503C;&#x3002;</p>
+<h4 id="&#x7559;&#x4E00;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x6CD5;leave-one-outloo">&#x7559;&#x4E00;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x6CD5;(leave-one-out,LOO)</h4>
+<p>&#x5C06;&#x8BAD;&#x7EC3;&#x96C6;&#x5212;&#x5206;&#x7684;&#x6570;&#x91CF;&#x7B49;&#x540C;&#x4E8E;&#x6837;&#x672C;&#x6570;(k=n),&#x8FD9;&#x6837;&#x6BCF;&#x6B21;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6837;&#x672C;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x3002;<strong>&#x5F53;&#x6570;&#x636E;&#x96C6;&#x975E;&#x5E38;&#x5C0F;&#x65F6;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;</strong>&#x3002;</p>
+<h4 id="&#x5206;&#x5C42;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;">&#x5206;&#x5C42;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;</h4>
+<p>&#x5206;&#x5C42;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x533A;&#x522B;&#x4E8E;&#x6807;&#x51C6;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x5728;&#x4E8E;&#x7C7B;&#x522B;&#x6BD4;&#x4F8B;&#x5728;&#x6BCF;&#x4E2A;&#x5206;&#x5757;&#x4E2D;&#x7684;&#x4EE5;&#x4FDD;&#x6301;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x6BCF;&#x4E2A;&#x5206;&#x5757;&#x4E2D;&#x7684;&#x7C7B;&#x522B;&#x6BD4;&#x4F8B;&#x4E0E;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x7684;&#x6574;&#x4F53;&#x6BD4;&#x4F8B;&#x4E00;&#x81F4;&#x3002;</p>
+<h4 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h4>
+<p>&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x4E2D;&#x6CDB;&#x5316;&#x6027;&#x80FD;&#x65B9;&#x5DEE;&#x7684;&#x4F30;&#x8BA1;&#xFF0C;&#x53C2;&#x8003;&#x8BBA;&#x6587;:<a href="http://www.jmlr.org/papers/volume6/markatou05a/markatou05a.pdf" target="_blank">analysis of variance of cross-validation estimators of the generalization error</a></p>
+<h2 id="&#x901A;&#x8FC7;&#x5B66;&#x4E60;&#x53CA;&#x9A8C;&#x8BC1;&#x66F2;&#x7EBF;&#x6765;&#x8C03;&#x8BD5;&#x7B97;&#x6CD5;">&#x901A;&#x8FC7;&#x5B66;&#x4E60;&#x53CA;&#x9A8C;&#x8BC1;&#x66F2;&#x7EBF;&#x6765;&#x8C03;&#x8BD5;&#x7B97;&#x6CD5;</h2>
+<p>&#x5728;&#x672C;&#x8282;&#xFF0C;&#x5C06;&#x5B66;&#x4E60;&#x4E24;&#x4E2A;&#x6709;&#x52A9;&#x4E8E;&#x63D0;&#x9AD8;&#x7B97;&#x6CD5;&#x6027;&#x80FD;&#x7684;&#x7B80;&#x5355;&#x4F46;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;&#x5224;&#x5B9A;&#x5DE5;&#x5177;:&#x5B66;&#x4E60;&#x66F2;&#x7EBF;(learning curve)&#x3001;&#x9A8C;&#x8BC1;&#x66F2;&#x7EBF;(validation curve)&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;&#x5B66;&#x4E60;&#x66F2;&#x7EBF;&#x5224;&#x5B9A;&#x504F;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;&#x95EE;&#x9898;">&#x4F7F;&#x7528;&#x5B66;&#x4E60;&#x66F2;&#x7EBF;&#x5224;&#x5B9A;&#x504F;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;&#x95EE;&#x9898;</h3>
+<p>&#x5982;&#x679C;&#x6A21;&#x578B;&#x5728;&#x7ED9;&#x5B9A;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x71B5;&#x8FC7;&#x4E8E;&#x590D;&#x6742;(&#x6A21;&#x578B;&#x4E2D;&#x5B58;&#x5728;&#x592A;&#x591A;&#x7684;&#x81EA;&#x7531;&#x5EA6;&#x6216;&#x8005;&#x53C2;&#x6570;)&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x6A21;&#x578B;&#x5F88;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x8FC7;&#x62DF;&#x5408;&#x3002;<strong>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6536;&#x96C6;&#x66F4;&#x591A;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x6709;&#x52A9;&#x4E8E;&#x964D;&#x4F4E;&#x6A21;&#x578B;&#x7684;&#x8FC7;&#x62DF;&#x5408;&#x7A0B;&#x5EA6;</strong>&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x5C06;&#x6A21;&#x578B;&#x7684;&#x8BAD;&#x7EC3;&#x53CA;&#x51C6;&#x786E;&#x6027;&#x9A8C;&#x8BC1;&#x770B;&#x4F5C;&#x662F;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5927;&#x5C0F;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x7ED8;&#x5236;&#x5176;&#x56FE;&#x50CF;&#xFF0C;<strong>&#x5F88;&#x5BB9;&#x6613;&#x770B;&#x51FA;&#x6A21;&#x578B;&#x662F;&#x9762;&#x4E34;&#x9AD8;&#x504F;&#x5DEE;&#x8FD8;&#x662F;&#x9AD8;&#x65B9;&#x5DEE;&#x95EE;&#x9898;</strong>&#xFF1A;</p>
+<p><img src="image/learn-curve-1.png" alt="earn-curve-"></p>
+<p>&#x5DE6;&#x4E0A;&#x56FE;&#x663E;&#x793A;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x504F;&#x5DEE;&#x6A21;&#x578B;&#x3002;&#x6B64;&#x6A21;&#x578B;&#x7684;&#x8BAD;&#x7EC3;&#x51C6;&#x786E;&#x7387;&#x548C;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x51C6;&#x786E;&#x7387;&#x90FD;&#x5F88;&#x4F4E;&#x3002;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x7684;&#x5E38;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x589E;&#x52A0;&#x6A21;&#x578B;&#x4E2D;&#x53C2;&#x6570;&#x7684;&#x6570;&#x91CF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6536;&#x96C6;&#x6216;&#x6784;&#x5EFA;&#x65B0;&#x7279;&#x5F81;&#xFF0C;&#x6216;&#x8005;&#x964D;&#x4F4E;&#x7C7B;&#x4F3C;&#x4E8E;svm&#x3001;logistic regression&#x7B49;&#x6A21;&#x578B;&#x7684;&#x6B63;&#x5219;&#x5316;&#x7A0B;&#x5EA6;&#x3002;</p>
+<p>&#x53F3;&#x4E0A;&#x56FE;&#x663E;&#x793A;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x65B9;&#x5DEE;&#x6A21;&#x578B;&#x3002;&#x8868;&#x660E;&#x8BAD;&#x7EC3;&#x51C6;&#x786E;&#x5EA6;&#x4E0E;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x51C6;&#x786E;&#x7387;&#x4E4B;&#x95F4;&#x6709;&#x5F88;&#x5927;&#x7684;&#x5DEE;&#x8DDD;&#x3002;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x7684;&#x5E38;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x6536;&#x96C6;&#x66F4;&#x591A;&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x6216;&#x8005;&#x964D;&#x4F4E;&#x6A21;&#x578B;&#x7684;&#x590D;&#x6742;&#x5EA6;(&#x6B63;&#x5219;&#x5316;&#xFF0C;&#x964D;&#x7EF4;&#xFF0C;&#x7279;&#x5F81;&#x9009;&#x62E9;)</p>
+<h3 id="&#x901A;&#x8FC7;&#x9A8C;&#x8BC1;&#x66F2;&#x7EBF;&#x6765;&#x5224;&#x5B9A;&#x8FC7;&#x62DF;&#x5408;&#x4E0E;&#x6B20;&#x62DF;&#x5408;">&#x901A;&#x8FC7;&#x9A8C;&#x8BC1;&#x66F2;&#x7EBF;&#x6765;&#x5224;&#x5B9A;&#x8FC7;&#x62DF;&#x5408;&#x4E0E;&#x6B20;&#x62DF;&#x5408;</h3>
+<p><strong>&#x9A8C;&#x8BC1;&#x66F2;&#x7EBF;</strong>&#x7ED8;&#x5236;&#x7684;&#x662F;&#x51C6;&#x786E;&#x7387;&#x4E0E;&#x6A21;&#x578B;&#x53C2;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
+<h2 id="&#x901A;&#x8FC7;&#x7F51;&#x683C;&#x641C;&#x7D22;&#x8C03;&#x4F18;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6A21;&#x578B;">&#x901A;&#x8FC7;&#x7F51;&#x683C;&#x641C;&#x7D22;&#x8C03;&#x4F18;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6A21;&#x578B;</h2>
+<p>&#x673A;&#x5668;&#x5B66;&#x4E60;&#x4E2D;&#xFF0C;&#x6709;&#x4E24;&#x7C7B;&#x53C2;&#x6570;&#xFF1A;&#x4E00;&#x79CD;&#x662F;&#x901A;&#x8FC7;&#x6A21;&#x578B;&#x5B66;&#x4E60;&#x6C42;&#x51FA;&#x6765;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x5C31;&#x662F;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x7684;&#x8D85;&#x53C2;&#x6570;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;&#x7F51;&#x683C;&#x641C;&#x7D22;&#x8C03;&#x4F18;&#x8D85;&#x53C2;">&#x4F7F;&#x7528;&#x7F51;&#x683C;&#x641C;&#x7D22;&#x8C03;&#x4F18;&#x8D85;&#x53C2;</h3>
+<p>&#x7F51;&#x683C;&#x641C;&#x7D22;&#x6CD5;(<strong>&#x7ED3;&#x5408;&#x4E86;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;</strong>)&#x901A;&#x8FC7;&#x5BF9;&#x6307;&#x5B9A;&#x7684;&#x4E0D;&#x540C;&#x8D85;&#x53C2;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x66B4;&#x529B;&#x679A;&#x4E3E;&#x641C;&#x7D22;&#xFF0C;&#x5E76;&#x8BC4;&#x4F30;&#x6BCF;&#x4E2A;&#x8D85;&#x53C2;&#x7EC4;&#x5408;&#x5BF9;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4EE5;&#x83B7;&#x5F97;&#x53C2;&#x6570;&#x7684;&#x6700;&#x4F18;&#x7EC4;&#x5408;&#x3002;<strong>&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x770B;&#x4F5C;&#x9A8C;&#x8BC1;&#x66F2;&#x7EBF;&#x7684;&#x63A8;&#x5E7F;</strong>&#x3002;</p>
+<p><strong>&#x4F18;&#x70B9;&#xFF1A;</strong></p>
+<ul>
+<li>&#x603B;&#x80FD;&#x627E;&#x5230;&#x6700;&#x4F18;&#x7684;&#x53C2;&#x6570;&#x7EC4;&#x5408;</li>
+</ul>
+<p><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong></p>
+<ul>
+<li>&#x8BA1;&#x7B97;&#x6210;&#x672C;&#x6602;&#x8D35;</li>
+</ul>
+<blockquote>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x62BD;&#x53D6;&#x4E0D;&#x540C;&#x53C2;&#x6570;&#x7EC4;&#x5408;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;<a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html#sklearn.model_selection.RandomizedSearchCV" target="_blank">&#x201C;&#x968F;&#x673A;&#x641C;&#x7D22;</a>&#x201D;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4EE5;&#x7279;&#x5F81;&#x7684;&#x4EE3;&#x4EF7;&#x4ECE;&#x62BD;&#x6837;&#x5206;&#x5E03;&#x4E2D;&#x62BD;&#x53D6;&#x51FA;&#x968F;&#x673A;&#x7684;&#x53C2;&#x6570;&#x7EC4;&#x5408;&#x3002;</p>
+</blockquote>
+<h3 id="&#x901A;&#x8FC7;&#x5D4C;&#x5957;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x9009;&#x62E9;&#x7B97;&#x6CD5;">&#x901A;&#x8FC7;&#x5D4C;&#x5957;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x9009;&#x62E9;&#x7B97;&#x6CD5;</h3>
+<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x540C;&#x4E00;&#x79CD;&#x6A21;&#x578B;&#x4E2D;&#xFF0C;&#x5BF9;&#x5176;&#x8C03;&#x53C2;&#x6765;&#x83B7;&#x53D6;&#x6700;&#x4F18;&#x7684;&#x6A21;&#x578B;&#x53C2;&#x6570;&#x3002;&#x5982;&#x679C;&#x8981;&#x5728;<strong>&#x4E0D;&#x540C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;</strong>&#x4E2D;&#x505A;&#x51FA;&#x9009;&#x62E9;&#xFF0C;&#x5219;&#x63A8;&#x8350;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x2014;&#x2014;&#x5D4C;&#x5957;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x3002;</p>
+<blockquote>
+<p>&#x4F7F;&#x7528;&#x5D4C;&#x5957;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#xFF0C;&#x4F30;&#x8BA1;&#x7684;&#x771F;&#x5B9E;&#x8BEF;&#x5DEE;&#x4E0E;&#x5728;&#x6D4B;&#x8BD5;&#x96C6;&#x4E0A;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#x5DEE;&#x8DDD;&#x3002;&#x53C2;&#x8003;&#x8BBA;&#x6587;&#xFF1A;&#x300A;<a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-91" target="_blank">bias in error estimation when using cross-validation for model selection</a>&#x300B;</p>
+</blockquote>
+<ol>
+<li>&#x5728;&#x5D4C;&#x5957;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x7684;&#x5916;&#x56F4;&#x5FAA;&#x73AF;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6570;&#x636E;&#x5212;&#x5206;&#x4E3A;&#x8BAD;&#x7EC3;&#x5757;&#x548C;&#x6D4B;&#x8BD5;&#x5757;&#xFF0C;&#x5BF9;&#x6A21;&#x578B;&#x9009;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x8D85;&#x53C2;&#x6570;&#x7EC4;&#x5408;</li>
+<li>&#x5728;&#x6A21;&#x578B;&#x9009;&#x62E9;&#x7684;&#x5185;&#x90E8;&#x5FAA;&#x73AF;&#x4E2D;&#xFF0C;&#x57FA;&#x4E8E;&#x8BAD;&#x7EC3;&#x5757;&#x4F7F;&#x7528;k&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x8BC4;&#x4F30;&#x6A21;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x6A21;&#x578B;&#x9009;&#x62E9;</li>
+<li>&#x9000;&#x51FA;&#x5185;&#x90E8;&#x5FAA;&#x73AF;&#x4E4B;&#x540E;&#xFF0C;&#x4F7F;&#x7528;&#x6D4B;&#x8BD5;&#x5757;&#x8BC4;&#x4F30;&#x6A21;&#x578B;</li>
+</ol>
+<p><img src="image/embed-1.png" alt="mbed-"></p>
+<h2 id="&#x4E86;&#x89E3;&#x4E0D;&#x540C;&#x7684;&#x6027;&#x80FD;&#x8BC4;&#x4EF7;&#x6307;&#x6807;">&#x4E86;&#x89E3;&#x4E0D;&#x540C;&#x7684;&#x6027;&#x80FD;&#x8BC4;&#x4EF7;&#x6307;&#x6807;</h2>
+<p>&#x6A21;&#x578B;&#x8BC4;&#x4F30;&#x6307;&#x6807;&#xFF1A;</p>
+<ul>
+<li>&#x51C6;&#x786E;&#x7387;(accuracy)</li>
+<li>&#x7CBE;&#x786E;&#x7387;(precision)</li>
+<li>&#x53EC;&#x56DE;&#x7387;(recall)</li>
+<li>F1&#x5206;&#x6570;(F1-score)</li>
+</ul>
+<h3 id="&#x8BFB;&#x53D6;&#x6DF7;&#x6DC6;&#x77E9;&#x9635;">&#x8BFB;&#x53D6;&#x6DF7;&#x6DC6;&#x77E9;&#x9635;</h3>
+<p><img src="image/performance-1.png" alt="erformance-"></p>
+<h3 id="&#x4F18;&#x5316;&#x5206;&#x7C7B;&#x6A21;&#x578B;&#x7684;&#x51C6;&#x786E;&#x7387;&#x548C;&#x53EC;&#x56DE;&#x7387;">&#x4F18;&#x5316;&#x5206;&#x7C7B;&#x6A21;&#x578B;&#x7684;&#x51C6;&#x786E;&#x7387;&#x548C;&#x53EC;&#x56DE;&#x7387;</h3>
+<p>&#x9884;&#x6D4B;&#x8BEF;&#x5DEE;(ERR)&#x548C;&#x51C6;&#x786E;&#x7387;(ACC)&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x8BEF;&#x5206;&#x7C7B;&#x6837;&#x672C;&#x6570;&#x91CF;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x3002;</p>
+<p>$$
+ERR = \frac{FP+FN}{FP+FN+TP+TN} \
+ACC = \frac{TP+TN}{FP+FN+TP+TN} = 1-ERR</p>
+<p>$$
+<strong>&#x5BF9;&#x4E8E;&#x7C7B;&#x522B;&#x6570;&#x91CF;&#x4E0D;&#x5747;&#x8861;&#x7684;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x6765;&#x8BF4;</strong>&#xFF0C;&#x771F;&#x6B63;&#x7387;(TPR)&#x548C;&#x5047;&#x6B63;&#x7387;(FPR)&#x662F;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x6027;&#x80FD;&#x6307;&#x6807;:</p>
+<p>$$
+FPR  =\frac{FP}{N} = \frac{FP}{FP+TN} \
+TPR = \frac{TP}{p} = \frac{TP}{FN+TP}</p>
+<p>$$</p>
+<blockquote>
+<p>&#x4EE5;&#x80BF;&#x7624;&#x8BCA;&#x65AD;&#x4E3A;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x66F4;&#x4E3A;&#x5173;&#x6CE8;&#x7684;&#x662F;&#x6B63;&#x786E;&#x68C0;&#x6D4B;&#x51FA;&#x6076;&#x6027;&#x80BF;&#x7624;&#xFF0C;&#x4F7F;&#x5F97;&#x75C5;&#x4EBA;&#x5F97;&#x5230;&#x6070;&#x5F53;&#x6CBB;&#x7597;&#xFF0C;&#x800C;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#x964D;&#x4F4E;&#x826F;&#x6027;&#x80BF;&#x7624;&#x7684;&#x8BEF;&#x5224;&#x7387;(&#x5047;&#x6B63;&#x7387;)&#x5BF9;&#x60A3;&#x8005;&#x7684;&#x5F71;&#x54CD;&#x4E0D;&#x5927;&#x3002;&#x771F;&#x6B63;&#x7387;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x4E8E;&#x6B63;&#x786E;&#x8BC6;&#x522B;&#x51FA;&#x6076;&#x6027;&#x80BF;&#x7624;&#x6837;&#x672C;&#x7684;&#x6709;&#x7528;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<p>&#x7CBE;&#x786E;&#x7387;(precision,PRE)&#x548C;&#x53EC;&#x56DE;&#x7387;(recall,REC)&#x662F;&#x4E0E;&#x771F;&#x6B63;&#x7387;&#x3001;&#x771F;&#x8D1F;&#x7387;&#x76F8;&#x5173;&#x7684;&#x6027;&#x80FD;&#x8BC4;&#x4EF7;&#x6307;&#x6807;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x53EC;&#x56DE;&#x7387;&#x4E0E;&#x771F;&#x6B63;&#x7387;&#x542B;&#x4E49;&#x76F8;&#x540C;&#xFF1A;</p>
+<p>$$
+PRE = \frac{TP}{TP+FP} \
+REC = TPR = \frac{TP}{P}=\frac{TP}{FN+TP}</p>
+<p>$$
+&#x5728;&#x5B9E;&#x8DF5;&#x4E2D;&#xFF0C;&#x5E38;&#x91C7;&#x7528;<strong>&#x7CBE;&#x786E;&#x7387;&#x4E0E;&#x53EC;&#x56DE;&#x7387;&#x7684;&#x7EC4;&#x5408;</strong>&#xFF0C;&#x79F0;&#x4E3A;<strong>F1&#x5206;&#x6570;</strong>&#xFF1A;</p>
+<p>$$
+F1 = 2\frac{PRE&#xD7; REC}{PRE+REC}</p>
+<p>$$</p>
+<h3 id="&#x7ED8;&#x5236;roc&#x66F2;&#x7EBF;">&#x7ED8;&#x5236;ROC&#x66F2;&#x7EBF;</h3>
+<p>&#x53D7;&#x8BD5;&#x8005;&#x5DE5;&#x4F5C;&#x7279;&#x5F81;&#x66F2;&#x7EBF;(receiver operator characteristic , ROC)&#x662F;&#x57FA;&#x4E8E;&#x6A21;&#x578B;&#x5047;&#x6B63;&#x7387;&#x548C;&#x771F;&#x6B63;&#x7387;&#x7B49;&#x6027;&#x80FD;&#x6307;&#x6807;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x6A21;&#x578B;&#x9009;&#x62E9;&#x7684;&#x6709;&#x7528;&#x5DE5;&#x5177;&#xFF0C;&#x5047;&#x6B63;&#x7387;&#x548C;&#x771F;&#x6B63;&#x7387;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x79FB;&#x52A8;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x5206;&#x7C7B;&#x9608;&#x503C;&#x6765;&#x8BA1;&#x7B97;&#x3002;</p>
+<p>ROC&#x66F2;&#x7EBF;&#x7684;&#x5BF9;&#x89D2;&#x7EBF;&#x7406;&#x89E3;&#x4E3A;&#x968F;&#x673A;&#x731C;&#x6D4B;&#xFF0C;&#x5982;&#x679C;&#x5206;&#x7C7B;&#x5668;&#x6027;&#x80FD;&#x66F2;&#x7EBF;&#x5728;&#x5BF9;&#x89D2;&#x7EBF;&#x4EE5;&#x4E0B;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x6027;&#x80FD;&#x5C31;&#x6BD4;&#x968F;&#x673A;&#x731C;&#x6D4B;&#x8FD8;&#x5DEE;&#x3002;</p>
+<blockquote>
+<p>&#x5BF9;&#x4E8E;&#x5B8C;&#x7F8E;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x6765;&#x8BF4;&#xFF0C;&#x5176;&#x771F;&#x6B63;&#x7387;&#x4E3A;1&#xFF0C;&#x5047;&#x6B63;&#x7387;&#x4E3A;0&#xFF0C;&#x8FD9;&#x65F6;&#x7684;ROC&#x66F2;&#x7EBF;&#x5373;&#x4E3A;&#x6A2A;&#x8F74;0&#x4E0E;&#x7EB5;&#x8F74;1&#x7EC4;&#x6210;&#x7684;&#x6298;&#x7EBF;&#x3002;</p>
+</blockquote>
+<p><strong>&#x57FA;&#x4E8E;ROC&#x66F2;&#x7EBF;</strong>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;ROC&#x66F2;&#x7EBF;&#x4E0B;&#x7684;&#x533A;&#x57DF;(area under the curve,<strong>AUC</strong>),&#x7528;&#x6765;<strong>&#x523B;&#x753B;&#x5206;&#x7C7B;&#x6A21;&#x578B;&#x7684;&#x6027;&#x80FD;</strong>&#x3002;</p>
+<p><strong>&#x5EF6;&#x4F38;</strong>:&#x4E0D;&#x540C;&#x6982;&#x7387;&#x9608;&#x503C;&#x4E0B;&#x5206;&#x7C7B;&#x5668;&#x7684;<a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html" target="_blank">&#x7CBE;&#x786E;&#x7387;-&#x53EC;&#x56DE;&#x7387;&#x66F2;&#x7EBF;</a></p>
+<p>&#x901A;&#x8FC7;ROC AUC&#x5F97;&#x5230;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x6027;&#x80FD;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x8FDB;&#x4E00;&#x6B65;&#x6D1E;&#x6089;&#x5206;&#x7C7B;&#x5668;&#x5728;&#x7C7B;&#x522B;&#x4E0D;&#x5747;&#x8861;&#x6837;&#x672C;&#x96C6;&#x5408;&#x4E0A;&#x7684;&#x6027;&#x80FD;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x65E2;&#x7136;<strong>&#x51C6;&#x786E;&#x7387;&#x8BC4;&#x5206;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;ROC&#x66F2;&#x7EBF;&#x4E0A;&#x67D0;&#x4E2A;&#x5355;&#x70B9;&#x5904;&#x7684;&#x503C;</strong>&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;ROC AUC&#x4E0E;&#x51C6;&#x786E;&#x7387;&#x77E9;&#x9635;&#x4E4B;&#x95F4;&#x662F;&#x76F8;&#x4E92;&#x4E00;&#x81F4;&#x7684;&#x3002;</p>
+<h3 id="&#x591A;&#x7C7B;&#x522B;&#x5206;&#x7C7B;&#x7684;&#x8BC4;&#x4EF7;&#x6807;&#x51C6;">&#x591A;&#x7C7B;&#x522B;&#x5206;&#x7C7B;&#x7684;&#x8BC4;&#x4EF7;&#x6807;&#x51C6;</h3>
+<p>&#x5728;sklearn&#x4E2D;&#x5B9E;&#x73B0;&#x4E86;macro&#x53CA;micro&#x5747;&#x503C;&#x65B9;&#x6CD5;&#xFF0C;&#x65E8;&#x5728;&#x901A;&#x8FC7;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x8BC4;&#x5206;&#x6807;&#x51C6;&#x6269;&#x5C55;&#x5230;&#x4E86;&#x591A;&#x7C7B;&#x522B;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x3002;</p>
+<ul>
+<li><p>micro&#x5747;&#x503C;
+$$
+PRE_{micro} = \frac{TP_1+\dots+TP_k}{TP_1+\dots+TP_k+FP_1+\dots+FP_k} 
+$$</p>
+</li>
+<li><p>macro&#x5747;&#x503C;
+$$
+PRE_{macro} = \frac{PRE_1+\dots+PRE_k}{k}
+$$</p>
+</li>
+</ul>
+<p>&#x591A;&#x5206;&#x7C7B;&#x8BC4;&#x4EF7;&#x6807;&#x51C6;&#x4E3A;&#x628A;&#x591A;&#x5206;&#x7C7B;&#x5206;&#x6210;k&#x4E2A;&#x4E8C;&#x5206;&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x5206;&#x522B;&#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;&#x7C7B;&#x522B;&#x4E2D;&#x7684;PRE&#xFF0C;&#x6700;&#x540E;&#x4F7F;&#x7528;&#x5F52;&#x4E00;&#x5316;(&#x76F4;&#x63A5;&#x9664;&#x4EE5;k)&#x6216;&#x8005;&#x52A0;&#x6743;&#x5E73;&#x5747;&#x6765;&#x6C42;&#x5F97;&#x6574;&#x4E2A;&#x591A;&#x5206;&#x7C7B;&#x7684;PRE&#x3002;</p>
+<p>micro&#x5747;&#x503C;$PRE_{micro}$&#x5BF9;&#x5E94;&#x7740;&#x52A0;&#x6743;&#x5747;&#x503C;&#xFF0C;&#x8BA1;&#x7B97;&#x52A0;&#x6743;micro&#x5747;&#x503C;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x4EE5;&#x6BCF;&#x4E2A;&#x7C7B;&#x5BF9;&#x5E94;&#x7684;&#x6837;&#x672C;&#x6570;&#x91CF;&#x4E0E;&#x603B;&#x7684;&#x6837;&#x672C;&#x6570;&#x91CF;&#x7684;&#x6BD4;&#x503C;&#x4F5C;&#x4E3A;&#x6743;&#x91CD;&#x3002;</p>
+<p>macro&#x5747;&#x503C;$PRE_{macro}$&#x5BF9;&#x5E94;&#x7740;&#x5F52;&#x4E00;&#x5747;&#x503C;&#xFF0C;&#x5C31;&#x662F;&#x7B80;&#x5355;&#x7684;&#x628A;&#x6240;&#x6709;&#x7C7B;&#x522B;&#x5BF9;&#x5E94;&#x7684;PRE&#x9664;&#x4EE5;k&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch05.html" class="navigation navigation-prev " aria-label="Previous page: 第五章 通过降维压缩数据">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch07.html" class="navigation navigation-next " aria-label="Next page: 第七章 集成学习-组合不同的模型">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第六章 模型评估与参数调优实战","level":"1.5","depth":1,"next":{"title":"第七章 集成学习-组合不同的模型","level":"1.6","depth":1,"path":"ch07.md","ref":"ch07.md","articles":[]},"previous":{"title":"第五章 通过降维压缩数据","level":"1.4","depth":1,"path":"ch05.md","ref":"ch05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch06.md","mtime":"2018-12-26T12:44:50.431Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-26T12:53:32.120Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
